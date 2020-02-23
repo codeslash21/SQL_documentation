@@ -17,10 +17,17 @@ ON web_events.account_id = accounts.id
 JOIN orders
 ON accounts.id = orders.account_id`
 It might be nice if SQL enforced JOINs to be PK = FK, but if you want to join company name to the last name of another column, SQL will let you do it!
+#### JOIN - 
+An INNER JOIN that only pulls data that exists in both tables.
+#### LEFT JOIN - 
+Pulls all the data that exists in both tables, as well as all of the rows from the table in the FROM even if they do not exist in the JOIN statement.
+#### RIGHT JOIN - 
+Pulls all the data that exists in both tables, as well as all of the rows from the table in the JOIN even if they do not exist in the FROM statement
 #### Outer Join:
 The last type of join is a full outer join. This will return the inner join result set, as well as any unmatched rows from either of the two tables being joined.
 
 ### Aliases:
+You learned that you can alias tables and columns using AS or not using it. This allows you to be more efficient in the number of characters you need to write, while at the same time you can assure that your column headings are informative of the data in your table.
 `Select t1.column1 aliasname, t2.column2 aliasname2
 FROM tablename AS t1
 JOIN tablename2 AS t2`
