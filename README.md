@@ -1,5 +1,44 @@
 # SQL_documentation
 
+I think it is an important distinction to say that SQL is a language. Hence, the last word of SQL being language.
+
+### Why SQL:
+* SQL is easy to understand.
+* Traditional databases allow us to access data directly.
+* Traditional databases allow us to audit and replicate our data.
+* SQL is a great tool for analyzing multiple tables at once.
+* SQL allows you to analyze more complex questions than dashboard tools like Google Analytics.
+
+### SQL vs. NoSQL:
+You may have heard of NoSQL, which stands for not only SQL. Databases using NoSQL allow for you to write code that interacts with the data a bit differently. These NoSQL environments tend to be particularly popular for web based data, but less popular for data that lives in spreadsheets the way we have been analyzing data up to this point. One of the most popular NoSQL languages is called MongoDB.
+
+### Why Do Businesses Choose SQL?
+#### 1. Data integrity is ensured -
+only the data you want entered is entered, and only certain users are able to enter data into the database.
+#### 2. Data can be accessed quickly - 
+SQL allows you to obtain results very quickly from the data stored in a database. Code can be optimized to quickly pull results.
+#### 3. Data is easily shared - 
+multiple individuals can access data stored in a database, and the data is the same for all users allowing for consistent results for anyone with access to your database.
+
+### SQL Databases:
+There are many different types of SQL databases designed for different purposes.
+Some of the most popular databases include:
+* MySQL
+* Access
+* Oracle
+* Microsoft SQL Server
+* Postgres
+
+[Documentation](https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems)
+
+### A few key points about data stored in SQL databases:
+* Data in databases is stored in tables that can be thought of just like Excel spreadsheets.
+* All the data in the same column must match in terms of data type.
+* Consistent column types are one of the main reasons working with databases is fast.
+
+### Pivot Table:
+A pivot table is a table of statistics that summarizes the data of a more extensive table. This summary might include sums, averages, or other statistics, which the pivot table groups together in a meaningful way. Pivot tables are a technique in data processing.
+
 ### Keys:
   Primary Key (PK) : 
     A primary key is a unique column in a particular table. This is the first column in each of our tables. Here, those columns
