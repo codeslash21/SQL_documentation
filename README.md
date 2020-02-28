@@ -73,3 +73,6 @@ JOIN tablename2 AS t2`
 
 ### Why not Many-Many relationship:
 Think about a simple relationship like the one between Authors and Books. An author can write many books. A book could have many authors. Now, without a bridge table to resolve the many-to-many relationship, what would the alternative be? You'd have to add multiple Author_ID columns to the Books table, one for each author. But how many do you add? 2? 3? 10? However many you choose, you'll probably end up with a lot of sparse rows where many of the Author_ID values are NULL and there's a good chance that you'll run across a case where you need "just one more." So then you're either constantly modifying the schema to try to accommodate or you're imposing some artificial restriction ("no book can have more than 3 authors") to force things to fit.
+
+### NOTE :
+* NULLs are a datatype that specifies where no data exists in SQL. They are often ignored in our aggregation functions.
