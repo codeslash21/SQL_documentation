@@ -84,6 +84,17 @@ There are two common ways in which you are likely to encounter NULLs:
 ### MAX & MIN:
 Functionally, MIN and MAX are similar to COUNT in that they can be used on non-numerical columns. Depending on the column type, MIN will return the lowest number, earliest date, or non-numerical value as early in the alphabet as possible. As you might suspect, MAX does the opposite—it returns the highest number, the latest date, or the non-numerical value closest alphabetically to “Z.”
 
+### GROUP BY:
+* GROUP BY can be used to aggregate data within subsets of the data. For example, grouping for different accounts, different regions, or different sales representatives.
+* Any column in the SELECT statement that is not within an aggregator must be in the GROUP BY clause.
+* You can GROUP BY multiple columns at once, as we showed here. This is often useful to aggregate across a number of different segments.
+
+### DISTINCT:
+DISTINCT is always used in SELECT statements, and it provides the unique rows for all columns written in the SELECT statement. Therefore, you only use DISTINCT once in any particular SELECT statement.
+
+### HAVING:
+HAVING is the “clean” way to filter a query that has been aggregated, but this is also commonly done using a subquery. Essentially, any time you want to perform a WHERE on an element of your query that was created by an aggregate, you need to use HAVING instead.
+
 
 ### NOTE :
 * NULLs are a datatype that specifies where no data exists in SQL. They are often ignored in our aggregation functions.
