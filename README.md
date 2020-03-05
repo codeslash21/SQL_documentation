@@ -94,9 +94,48 @@ DISTINCT is always used in SELECT statements, and it provides the unique rows fo
 
 ### HAVING:
 HAVING is the “clean” way to filter a query that has been aggregated, but this is also commonly done using a subquery. Essentially, any time you want to perform a WHERE on an element of your query that was created by an aggregate, you need to use HAVING instead.
+HAVINNG apper after GROUP BY clause and before ORDER BY clause. HAVING is like WHERE, but it works on logical statements involving aggregation.
 
+### DATE:
+* DATE_TRUNC:
+This allows you to truncate your date to a particular part of your date-time column. Common trunctions are day, month, and year.
+* DATE_PART can be useful for pulling a specific portion of a date, but notice pulling month or day of the week (dow) means that you are no longer keeping the years in order. Rather you are grouping for certain components regardless of which year they belonged in.
+
+### CASE:
+* The CASE statement always goes in the SELECT clause.
+* CASE must include the following components: WHEN, THEN, and END. ELSE is an optional component to catch cases that didn’t meet any of the other previous CASE conditions.
+* You can make any conditional statement using any conditional operator (like WHERE) between WHEN and THEN. This includes stringing together multiple conditional statements using AND and OR.
+* You can include multiple WHEN statements, as well as an ELSE statement again, to deal with any unaddressed conditions.
+
+### Subquery:
+`SELECT *
+FROM (SELECT DATE_TRUNC('day',occurred_at) AS day,
+                channel, COUNT(*) as events
+      FROM web_events 
+      GROUP BY 1,2
+      ORDER BY 3 DESC) sub
+GROUP BY day, channel, events
+ORDER BY 2 DESC;`
+
+Note that you should not include an alias when you write a subquery in a conditional statement. This is because the subquery is treated as an individual value (or set of values in the IN case) rather than as a table.
+Also, notice the query here compared a single value. If we returned an entire column IN would need to be used to perform a logical argument. If we are returning an entire table, then we must use an ALIAS for the table, and perform additional logic on the entire table.
+
+### WITH:
+The WITH statement is often called a Common Table Expression or CTE. Though these expressions serve the exact same purpose as subqueries.
+
+### LEFT, RIGHT, LENGTH:
+* LEFT pulls a specified number of characters for each row in a specified column starting at the beginning (or from the left). You can pull the first three digits of a phone number using LEFT(phone_number, 3).
+* RIGHT pulls a specified number of characters for each row in a specified column starting at the end (or from the right). You can pull the last eight digits of a phone number using RIGHT(phone_number, 8).
+* LENGTH provides the number of characters for each row of a specified column. To get the length of each phone number as LENGTH(phone_number).
+* POSITION takes a character and a column, and provides the index where that character is for each row. The index of the first position is 1 in SQL. If you come from another programming language, many begin indexing at 0. Here, you saw that you can pull the index of a comma as POSITION(',' IN city_state).
+* STRPOS provides the same result as POSITION, but the syntax for achieving those results is a bit different as shown here: STRPOS(city_state, ',').
 
 ### NOTE :
 * NULLs are a datatype that specifies where no data exists in SQL. They are often ignored in our aggregation functions.
 * Unlike COUNT, you can only use SUM on numeric columns. However, SUM will ignore NULL values, as do the other aggregation functions.
 * Notice that MIN and MAX are aggregators that again ignore NULL values.
+* WHERE subsets the returnedd data based on logical statements.
+* `CASE` is used to combine `WHEN` and `THEN`.
+*  Both POSITION and STRPOS are case sensitive, so looking for A is different than looking for a.
+* COALESCE to work with NULL values. In general, COALESCE returns the first non-NULL value passed for each row.
+
